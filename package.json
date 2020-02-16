@@ -1,0 +1,22 @@
+{
+  "name": "sass-loader-font-awesome-gist",
+  "version": "1.0.0",
+  "description": "Gist to duplicate SASS issue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "R. L. Vandaveer",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.4.2",
+    "sass": "^1.25.0",
+    "sass-loader": "^8.0.2",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1"
+  }
+}
