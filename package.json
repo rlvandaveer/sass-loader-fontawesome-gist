@@ -1,9 +1,11 @@
 {
   "name": "sass-loader-font-awesome-gist",
   "version": "1.0.0",
-  "description": "Gist to duplicate SASS issue",
-  "main": "index.js",
+  "description": "Gist to duplicate SASS font issue",
+  "main": "src/index.js",
   "scripts": {
+    "build": "webpack --progress -d",
+    "build.prod": "webpack --progress -p --env.production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "R. L. Vandaveer",
@@ -11,6 +13,7 @@
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
+    "mini-css-extract-plugin": "^0.9.0",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
     "webpack": "^4.41.6",
