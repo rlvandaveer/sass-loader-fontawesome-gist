@@ -1,6 +1,7 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Configuration
@@ -11,6 +12,9 @@ const styleDir = path.resolve(__dirname, "styles");
 
 module.exports = ({ production } = {}) => {
 	return {
+		devServer: {
+			contentBase: "./dist"
+		},
 		entry: {
 			app: "./src/index.js"
 		},
@@ -28,7 +32,7 @@ module.exports = ({ production } = {}) => {
 						{
 							loader: "sass-loader",
 							options: {
-								implementation: require("node-sass"),
+								implementation: require("sass"), //require("node-sass")
 								sassOptions: {
 									outputStyle: production ? "compressed" : "expanded"
 								}
@@ -60,6 +64,9 @@ module.exports = ({ production } = {}) => {
 			new MiniCssExtractPlugin({
 				filename: production ? "[name].css" : "[name].css", //"[name].[contenthash].css"
 				chunkFilename: production ? "[id].[contenthash].css" : "[id].css",
+			}),
+			new HtmlWebpackPlugin({
+				template: "src/index.ejs"
 			})
 		],
 		resolve: {
