@@ -11,22 +11,11 @@ const styleDir = path.resolve(__dirname, "styles");
 
 module.exports = ({ production } = {}) => {
 	return {
-		devtool: production ? "source-map" : "eval-source-map",
 		entry: {
 			app: "./src/index.js"
 		},
-		mode: production ? "production" : "development",
 		module: {
 			rules: [
-				{
-					test: /\.ts$/,
-					use: "ts-loader",
-					exclude: /node_modules/
-				},
-				{
-					test: /\.css$/,
-					use: "css-loader"
-				},
 				{
 					test: /\.s[ac]ss$/,
 					use: [
@@ -39,12 +28,24 @@ module.exports = ({ production } = {}) => {
 						{
 							loader: "sass-loader",
 							options: {
+								implementation: require("node-sass"),
 								sassOptions: {
 									outputStyle: production ? "compressed" : "expanded"
 								}
 							}
 						}
 					]
+				},
+				{
+				  test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+				  use: [
+					{
+					  loader: "file-loader",
+					  options: {
+						name: "[name].[ext]"
+					  }
+					}
+				  ]
 				}
 			]
 		},
